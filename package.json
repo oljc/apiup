@@ -6,7 +6,7 @@
 	"version": "0.0.1",
 	"author": "oljc",
 	"description": "A collection of API library built with TypeScript",
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"scripts": {
 		"dev": "bun run --watch src/server.ts",
 		"start": "bun run src/server.ts",
