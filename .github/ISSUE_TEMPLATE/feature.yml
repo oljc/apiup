@@ -1,0 +1,69 @@
+---
+name: ✨ 功能请求
+description: 为 ApiUp 服务项目提出新功能建议
+title: "[Feature]: "
+labels: ["✨ feature", "pending triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您为 ApiUp 贡献想法！请详细描述您的功能需求，以帮助我们评估和实现。
+
+        - 请将功能标题格式化为：`类别: 功能简短描述` （例如：`feature: xxx api`）
+        - 在提交之前，请检查是否已存在类似的功能请求
+        - 请尽量提供具体的 API 使用场景和技术实现考虑
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题背景
+      description: 这个功能请求是为了解决什么问题或满足什么需求？
+      placeholder: |
+        请描述：
+        - 当前缺少什么功能
+        - 这个功能将解决什么具体问题
+        - 目标用户群体和使用场景
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 期望的解决方案
+      description: 您希望这个 API 功能如何工作？请详细描述预期的行为。
+      placeholder: |
+        请具体描述您期望的 API 功能，包括：
+        - API 端点设计（路径、方法、参数）
+        - 请求和响应格式
+        - 性能和安全考虑
+        - 与现有 API 的集成方式
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 优先级评估
+      description: 您认为这个功能的优先级如何？
+      options:
+        - 低 - 很好拥有的功能，不急需
+        - 中 - 重要功能，建议在下个版本实现
+        - 高 - 关键功能，希望优先实现
+      default: 1
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 核对清单
+      description: 在提交功能请求之前，请确保您已完成以下操作
+      options:
+        - label: 我已经搜索过现有的 Issues，确认没有重复的功能请求
+          required: true
+        - label: 我已经提供了清晰的问题背景和解决方案描述
+          required: true
+        - label: 我确认这个功能符合 API 服务项目的定位和目标
+          required: true
+        - label: 我已经考虑过这个功能对现有 API 架构的影响
+          required: false
