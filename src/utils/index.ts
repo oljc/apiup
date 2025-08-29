@@ -8,20 +8,22 @@ export function isNull(obj: any): obj is null {
 	return obj === null;
 }
 
-export function isEmpty(value: unknown): boolean {
-	// null 或 undefined
-	if (value === null || value === undefined) return true;
+export function isString(obj: any): obj is string {
+	return opt.call(obj) === '[object String]';
+}
 
-	// 空字符串
-	if (typeof value === 'string' && value.trim() === '') return true;
+export function isNumber(obj: any): obj is number {
+	return opt.call(obj) === '[object Number]';
+}
 
-	// 空数组
-	if (Array.isArray(value) && value.length === 0) return true;
+export function isArray(obj: any): obj is any[] {
+	return opt.call(obj) === '[object Array]';
+}
 
-	// 空对象
-	if (typeof value === 'object' && !Array.isArray(value)) {
-		return Object.keys(value as Record<string, unknown>).length === 0;
-	}
+export function isDate(obj: any): obj is Date {
+	return opt.call(obj) === '[object Date]';
+}
 
-	return false;
+export function isObject(obj: any): obj is { [key: string]: any } {
+	return opt.call(obj) === '[object Object]';
 }
