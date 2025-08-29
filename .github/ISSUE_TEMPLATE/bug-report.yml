@@ -1,0 +1,69 @@
+name: 🐛 Bug 报告
+description: 提交 Bug 或异常行为
+title: "[Bug]: "
+labels: ["🐛 bug", "pending triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您为 ApiUp 提交 Bug！请填写以下详细信息，以帮助我们快速定位和修复问题。
+
+        - 请将问题标题格式化为：`[Bug]：简短描述` （例如：`[Bug]：小某书 API 返回数据格式错误`）
+        - 在提交之前，请检查是否已存在类似的问题
+        - 请提供相关的 API 请求详情、响应数据或错误日志
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: 问题描述
+      description: 发生了什么问题？期望什么结果？
+      placeholder: |
+        **问题现象：**
+        调用 `/api/xhs/xxx` 接口时返回 500 错误
+
+        **期望结果：**
+        应该返回正常的数据响应
+
+        **API 请求示例（可选但推荐）：**
+        ```bash
+        curl -X POST http://localhost:3000/api/xhs/example \
+          -H "Content-Type: application/json" \
+          -d '{"key": "value"}'
+        ```
+
+        **API 响应示例（如果有）：**
+        ```json
+        {
+          "code": 500,
+          "message": "Internal Server Error",
+          "status": "error",
+          "data": null,
+          "timestamp": 1234567890
+        }
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: 补充信息（可选）
+      description: 其他有助于问题诊断的信息
+      placeholder: |
+        **环境信息：** macOS / Linux / Windows
+        **错误日志：** 请粘贴相关错误日志
+        **其他说明：** 任何其他相关信息
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 核对清单
+      description: 在提交问题之前，请确保您已完成以下操作。
+      options:
+        - label: 我已经搜索过现有的 Issues，确认没有重复的 Bug 报告
+          required: true
+        - label: 我已经提供了清晰且可重现的 API 调用步骤
+          required: true
+        - label: 我确定这是 API 服务的问题，而非客户端或网络问题
+          required: true
+        - label: 我已经提供了相关的错误日志和响应数据
+          required: false
