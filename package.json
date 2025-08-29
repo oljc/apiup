@@ -1,0 +1,38 @@
+{
+	"name": "api",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"version": "0.0.1",
+	"author": "oljc",
+	"description": "A collection of API library built with TypeScript",
+	"license": "MIT",
+	"scripts": {
+		"dev": "bun run --watch src/server.ts",
+		"start": "bun run src/server.ts",
+		"build": "bun build src/server.ts --outdir=dist",
+		"type-check": "tsc --noEmit",
+		"check": "biome check",
+		"check:fix": "biome check --write",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.2",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
+		"@types/bun": "latest",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.5"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"hono": "^4.9.4"
+	},
+	"lint-staged": {
+		"*": [
+			"biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+		]
+	}
+}
