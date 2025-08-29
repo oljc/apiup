@@ -1,0 +1,61 @@
+name: Bug Report
+description: 报告一个 bug / Report a bug
+title: "[BUG]"
+labels: bug
+
+body:
+  - type: input
+    id: description
+    attributes:
+      label: 问题描述 (Description)
+      description: 请详细描述你遇到的问题。
+      placeholder: 例如：登录接口返回 500 错误
+      value: ""
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 复现步骤 (Steps to Reproduce)
+      description: 请按顺序列出复现步骤
+      placeholder: |
+        1. 打开应用
+        2. 点击登录
+        3. 输入用户名密码，点击提交
+      value: ""
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: 预期结果 (Expected Result)
+      description: 你期望得到的结果
+      placeholder: 登录成功进入首页
+      value: ""
+
+  - type: textarea
+    id: actual_result
+    attributes:
+      label: 实际结果 (Actual Result)
+      description: 实际出现的结果
+      placeholder: 返回 500 错误
+      value: ""
+
+  - type: input
+    id: environment_os
+    attributes:
+      label: 操作系统 (OS)
+      placeholder: 例如：Windows 11 / macOS 13
+      value: ""
+
+  - type: input
+    id: environment_version
+    attributes:
+      label: 版本 (Version)
+      placeholder: 例如：v1.2.3
+      value: ""
+
+  - type: textarea
+    id: environment_other
+    attributes:
+      label: 其他信息 (Other)
+      description: 可以填写其他有助于排查的问题信息
+      value: ""

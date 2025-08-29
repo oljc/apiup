@@ -1,0 +1,68 @@
+name: Pull Request
+description: 用于提交代码变更 / Submit code changes
+title: "[PR]"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 变更内容 (Description)
+        <!--请简要描述本次提交的变更内容。-->
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 变更内容 (Description)
+      description: 请简要描述本次提交的变更内容。
+      placeholder: 例如：修复登录接口返回 500 错误
+      value: ""
+
+  - type: input
+    id: related_issue
+    attributes:
+      label: 关联的 Issue (Related Issue)
+      description: 如果有相关 Issue，请填写 Issue 编号，例如 #123
+      placeholder: #123
+      value: ""
+
+  - type: checkboxes
+    id: type_of_change
+    attributes:
+      label: 变更类型 (Type of Change)
+      description: 请选择变更类型
+      options:
+        - label: 新功能 (feat)
+          value: feat
+        - label: Bug 修复 (fix)
+          value: fix
+        - label: 文档更新 (docs)
+          value: docs
+        - label: 性能优化 (perf)
+          value: perf
+        - label: 重构代码 (refactor)
+          value: refactor
+        - label: 测试相关 (test)
+          value: test
+        - label: 其他 (chore)
+          value: chore
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 检查列表 (Checklist)
+      options:
+        - label: 我的代码遵循项目的代码规范
+          value: code_style
+        - label: 我已对新代码添加必要的测试
+          value: tests_added
+        - label: 本地测试通过，没有错误
+          value: tests_passed
+        - label: 变更已通过代码审查
+          value: code_reviewed
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: 备注 (Additional Notes)
+      description: 如有额外说明，请写在这里
+      placeholder: 例如：兼容旧版本接口
