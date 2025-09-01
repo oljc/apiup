@@ -62,8 +62,8 @@ body:
         - label: 我已经搜索过现有的 Issues，确认没有重复的功能请求
           required: true
         - label: 我已经提供了清晰的问题背景和解决方案描述
-          required: true
+          required: false
         - label: 我确认这个功能符合 API 服务项目的定位和目标
-          required: true
+          required: false
         - label: 我已经考虑过这个功能对现有 API 架构的影响
           required: false

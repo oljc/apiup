@@ -12,7 +12,7 @@
 
 1. 🔍 搜索现有的 [Issues](https://github.com/oljc/apiup/issues) 和 [Pull Requests](https://github.com/oljc/apiup/pulls)
 2. 💬 对于较大的变更或新功能，请先创建 Issue 进行讨论
-3. 📋 阅读我们的 [行为准则](CODE_OF_CONDUCT.md)
+3. 📋 阅读我们的 [行为准则](https://github.com/oljc/apiup/blob/main/.github/CODE_OF_CONDUCT.md)
 4. ⭐ 给项目点个 Star 表示支持（可选但很感谢！）
 
 
