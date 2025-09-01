@@ -62,8 +62,8 @@ body:
         - label: 我已经搜索过现有的 Issues，确认没有重复的 Bug 报告
           required: true
         - label: 我已经提供了清晰且可重现的 API 调用步骤
-          required: true
+          required: false
         - label: 我确定这是 API 服务的问题，而非客户端或网络问题
-          required: true
+          required: false
         - label: 我已经提供了相关的错误日志和响应数据
           required: false

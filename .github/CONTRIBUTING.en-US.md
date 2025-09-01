@@ -12,7 +12,7 @@ Before you start contributing, please read the following:
 
 1. 🔍 Search existing [Issues](https://github.com/oljc/apiup/issues) and [Pull Requests](https://github.com/oljc/apiup/pulls)
 2. 💬 For major changes or new features, please create an Issue for discussion first
-3. 📋 Read our [Code of Conduct](CODE_OF_CONDUCT.md)
+3. 📋 Read our [Code of Conduct](https://github.com/oljc/apiup/blob/main/.github/CODE_OF_CONDUCT.md)
 4. ⭐ Give the project a Star to show your support (optional but much appreciated!)
 
 > Fork → Clone → Branch → Develop → Commit → PR → Review → Merge
