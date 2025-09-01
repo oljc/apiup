@@ -7,28 +7,35 @@ import type { ApiResponse } from '@/types';
  * @param code 状态码
  * @returns 响应对象
  */
-export const success = <T>(data: T, message = 'OK', code = 200): ApiResponse<T> => {
+export const success = <T>(data: T, message = 'OK', code = 200, traceId = ''): ApiResponse<T> => {
 	return {
 		code,
 		data,
 		message,
-		timestamp: Date.now(),
 		status: 'success',
+		timestamp: Date.now(),
+		traceId,
 	};
 };
 
 /**
- * 错误
+ * 错误响应
  * @param message 消息
  * @param code 状态码
  * @returns 响应对象
  */
-export const error = (message = '服务器错误', code = 500): ApiResponse<null> => {
+export const error = <T>(
+	message = '服务器错误',
+	errors: T,
+	code = 500,
+	traceId = '',
+): ApiResponse<T> => {
 	return {
 		code,
-		data: null,
+		errors,
 		message,
-		timestamp: Date.now(),
 		status: 'error',
+		timestamp: Date.now(),
+		traceId,
 	};
 };
