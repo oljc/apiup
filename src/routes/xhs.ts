@@ -58,7 +58,7 @@ app.get(
 				desc: note.desc,
 				cover: note.imageList[0].urlPre,
 				imageList: note.imageList.map((item: any) => item.urlDefault),
-				video: video,
+				video,
 			};
 
 			return c.ok(result, '解析成功');
