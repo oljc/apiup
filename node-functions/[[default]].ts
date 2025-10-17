@@ -12,12 +12,6 @@ app.get('/', (c) => {
   return c.ok(null, '欢迎开放 API 服务')
 });
 
-app.get('/books/:url', (c) => {
-  const url = c.req.param('url')
-  console.log(url);
-  return c.ok(url)
-})
-
 app.route('/xhs', xhs);
 
 export default app;
