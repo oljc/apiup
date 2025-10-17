@@ -2,6 +2,5 @@
   "name": "apiup",
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "outputDirectory": "./next/build",
   "nodeVersion": "22.11.0"
 }
