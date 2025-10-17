@@ -1,8 +1,8 @@
 import { isNull } from 'checkis';
 import { Hono } from 'hono';
-import { extractLink } from 'node-functions/api/utils';
-import { fetchHtml } from 'node-functions/api/utils/fetch';
-import { validator } from 'node-functions/api/utils/validator';
+import { extractLink } from 'node-functions/utils';
+import { fetchHtml } from 'node-functions/utils/fetch';
+import { validator } from 'node-functions/utils/validator';
 
 const app = new Hono();
 const idRegex = /(?:discovery\/item|explore|item|note)\/([a-zA-Z0-9]+)/;
@@ -59,7 +59,6 @@ app.post(
 				avatar: note.user?.avatar,
 				title: note.title,
 				desc: note.desc,
-				cover: note.imageList[0].urlPre,
 				imageList: note.imageList,
 				video: video,
 			};

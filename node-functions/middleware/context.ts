@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { createMiddleware } from 'hono/factory';
-import { error, success } from 'node-functions/api/utils/response';
+import { error, success } from 'node-functions/utils/response';
 
 declare module 'hono' {
 	interface Context {
@@ -11,7 +11,6 @@ declare module 'hono' {
 
 export const contextMiddleware = createMiddleware(async (c, next) => {
 	const traceId = c.req.header('X-Trace-Id') || randomUUID();
-
 	c.header('X-Trace-Id', traceId);
 	c.ok = (data, message, code) => c.json(success(data, message, code, traceId));
 	c.fail = (message, data, code) => c.json(error(message, data, code, traceId));
