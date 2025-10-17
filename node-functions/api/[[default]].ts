@@ -9,11 +9,17 @@ const app = new Hono();
 app.use('*', corsMiddleware);
 app.use('*', contextMiddleware);
 
-app.get('/', (c) => {
-  const id = c.req.query('id')
+app.get('/', async(c) => {
+  const id = await c.req.param('id')
   console.log('Full URL:', c.req.url)
-  return c.ok('欢迎开放 API 服务', '欢迎开放 API 服务' + id)
+  return c.ok(id, '欢迎开放 API 服务')
 });
+
+app.post('/p', async(c) => {
+  const body = await c.req.parseBody()
+  console.log(body);
+  return c.ok(body, '123')
+})
 
 app.route('/xhs', xhs);
 

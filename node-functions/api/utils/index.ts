@@ -1,4 +1,4 @@
-import { isString } from './is';
+import { isString } from 'checkis';
 
 const URL_REGEX =
 	/https?:\/\/(?:[-\w.])+(?::[0-9]+)?(?:\/(?:[\w/_.])*)?(?:\?(?:[\w&=%.])*)?(?:#(?:[\w.])*)?/g;

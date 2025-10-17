@@ -1,15 +1,13 @@
 import { validator as honoValidator } from 'hono/validator';
 import {
 	isBoolean,
-	isDate,
 	isEmpty,
 	isFunction,
 	isNumber,
 	isObject,
-	isRegExp,
 	isString,
 	isUndefined,
-} from './is';
+} from 'checkis';
 
 export interface VerifyRule {
 	/** 数据类型 */

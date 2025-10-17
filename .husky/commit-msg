@@ -1,1 +1,0 @@
-bun --no-install commitlint --edit ""

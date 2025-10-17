@@ -1,7 +1,7 @@
+import { isNull } from 'checkis';
 import { Hono } from 'hono';
 import { extractLink } from 'node-functions/api/utils';
 import { fetchHtml } from 'node-functions/api/utils/fetch';
-import { isNull } from 'node-functions/api/utils/is';
 import { validator } from 'node-functions/api/utils/validator';
 
 const app = new Hono();
@@ -13,16 +13,16 @@ const extractId = (url: string): string | null => {
 	return match?.[1] ?? null;
 };
 
-app.get(
+app.post(
 	'/',
-	validator('query', {
+	validator('form', {
 		url: {
 			type: 'string',
 			required: true,
 		},
 	}),
 	async (c) => {
-		const { url } = c.req.valid('query') as { url: string };
+		const { url } = await c.req.parseBody() as { url: string };
 		let finalUrl = extractLink(url);
 
 		try {
@@ -45,6 +45,8 @@ app.get(
 			if (isNull(match)) return c.fail('获取数据失败');
 
 			const json = JSON.parse(match?.[1]?.replace(/undefined/g, 'null') ?? '{}');
+
+
 			const data = json.note;
 			const note = data?.noteDetailMap[data.firstNoteId || extractId(finalUrl)]?.note || {};
 

@@ -8,36 +8,32 @@
 	"description": "A collection of API library built with TypeScript",
 	"license": "Apache-2.0",
 	"scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "biome check",
-    "format": "biome format --write",
+		"dev": "next dev --turbopack",
+		"build": "next build --turbopack",
+		"start": "next start",
+		"lint": "biome check",
+		"format": "biome format --write",
 		"type:check": "tsc --noEmit",
 		"prepare": "husky"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
 		"@commitlint/cli": "^19.8.1",
 		"@commitlint/config-conventional": "^19.8.1",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.1.5",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+		"tailwindcss": "^4",
+		"typescript": "^5"
 	},
 	"dependencies": {
-    "hono": "^4.10.0",
-    "next": "15.5.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
-	},
-	"lint-staged": {
-		"*": [
-			"biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
-		]
+		"checkis": "^1.1.0",
+		"hono": "^4.10.0",
+		"next": "15.5.5",
+		"react": "19.1.0",
+		"react-dom": "19.1.0"
 	}
 }
