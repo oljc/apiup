@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
-import { extractLink } from '@/utils';
-import { fetchHtml } from '@/utils/fetch';
-import { isNull } from '@/utils/is';
-import { validator } from '@/utils/validator';
+import { extractLink } from 'node-functions/api/utils';
+import { fetchHtml } from 'node-functions/api/utils/fetch';
+import { isNull } from 'node-functions/api/utils/is';
+import { validator } from 'node-functions/api/utils/validator';
 
 const app = new Hono();
 const idRegex = /(?:discovery\/item|explore|item|note)\/([a-zA-Z0-9]+)/;
@@ -27,6 +27,7 @@ app.get(
 
 		try {
 			const domain = new URL(url);
+
 			if (domain.host === 'xhs.com') {
 				const parts = url.split('/');
 				finalUrl = `http://xhslink.com/n/${parts[4]}`;
@@ -36,8 +37,8 @@ app.get(
 				const res = await fetch(url, { redirect: 'follow' });
 				finalUrl = res.url;
 			}
-
 			const html = await fetchHtml(finalUrl);
+
 			if (!html) return c.fail('请求失败');
 
 			const match = html.match(scriptRegex);
@@ -57,7 +58,7 @@ app.get(
 				title: note.title,
 				desc: note.desc,
 				cover: note.imageList[0].urlPre,
-				imageList: note.imageList.map((item: any) => item.urlDefault),
+				imageList: note.imageList,
 				video: video,
 			};
 

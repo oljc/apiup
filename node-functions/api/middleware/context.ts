@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { createMiddleware } from 'hono/factory';
-import { error, success } from '@/utils/response';
+import { error, success } from 'node-functions/api/utils/response';
 
 declare module 'hono' {
 	interface Context {

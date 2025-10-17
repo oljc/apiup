@@ -138,6 +138,8 @@ export const validator = (
 	const { code = 400 } = options || {};
 
 	return honoValidator(target, (value, c) => {
+    console.log('参数',value);
+
 		const result = validateData(value, schema);
 
 		if (result.ok) return result.data;

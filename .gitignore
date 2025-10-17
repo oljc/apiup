@@ -1,18 +1,42 @@
 node_modules
-
-out
-dist
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.tsbuildinfo
 *.tgz
 
+dist
+out
+build
 coverage
 *.lcov
 
 logs
-_.log
-report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+*.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 .env
-.cache
-*.tsbuildinfo
+.env*
+*.pem
+
 .idea
 .DS_Store
+
+.pnp
+.pnp.*
+.yarn/*
+.pnpm-store
+.pnpm-debug.log*
+
+.next
+.vercel
+.cache
+next-env.d.ts
+
+# Tencent Cloud EdgeOne
+.env
+.edgeone/*
+!.edgeone/project.json
+.tef_dist/*
+  

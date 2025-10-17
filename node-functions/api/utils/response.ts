@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@/types';
+import type { ApiResponse } from 'node-functions/api/types';
 
 /**
  * 成功响应
