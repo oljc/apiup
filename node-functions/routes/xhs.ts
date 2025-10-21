@@ -15,14 +15,14 @@ const extractId = (url: string): string | null => {
 
 app.post(
 	'/',
-	validator('form', {
+	validator('json', {
 		url: {
 			type: 'string',
 			required: true,
 		},
 	}),
 	async (c) => {
-		const { url } = (await c.req.parseBody()) as { url: string };
+		const { url } = await c.req.json();
 		const finalUrl = extractLink(url);
 
 		try {
