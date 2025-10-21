@@ -1,14 +1,4 @@
-import { isString } from 'checkis';
+const URL_REGEX = /https?:\/\/[^\s'"<>]+/i;
 
-const URL_REGEX =
-	/https?:\/\/(?:[-\w.])+(?::[0-9]+)?(?:\/(?:[\w/_.])*)?(?:\?(?:[\w&=%.])*)?(?:#(?:[\w.])*)?/g;
-
-/**
- * 获取文本中链接
- */
-export const extractLink = (text: string) => {
-	if (!text || !isString(text)) return '';
-	URL_REGEX.lastIndex = 0;
-	const match = URL_REGEX.exec(text);
-	return match?.[0] || '';
-};
+export const extractLink = (text: string): string =>
+	text ? (text.match(URL_REGEX) || [''])[0] : '';

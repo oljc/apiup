@@ -22,22 +22,10 @@ app.post(
 		},
 	}),
 	async (c) => {
-		const { url } = await c.req.parseBody() as { url: string };
-		let finalUrl = extractLink(url);
+		const { url } = (await c.req.parseBody()) as { url: string };
+		const finalUrl = extractLink(url);
 
 		try {
-			// const domain = new URL(url);
-			// if (domain.host === 'xhs.com') {
-			// 	const parts = url.split('/');
-			// 	finalUrl = `http://xhslink.com/n/${parts[4]}`;
-			// }
-
-			// if (domain.host !== 'www.xiaohongshu.com') {
-			// 	const res = await fetch(url, { redirect: 'follow' });
-			// 	finalUrl = res.url;
-			// }
-      console.log(finalUrl);
-
 			const html = await fetchHtml(finalUrl);
 
 			if (!html) return c.fail('请求失败');
@@ -47,60 +35,62 @@ app.post(
 
 			const json = JSON.parse(match?.[1]?.replace(/undefined/g, 'null') ?? '{}');
 
-
 			const data = json.note;
 			const note = data?.noteDetailMap[data.firstNoteId || extractId(finalUrl)]?.note || {};
 
-      const visuals: any[] = [];
-      if(note.type === 'normal') {
-        note.imageList.forEach((item: any) => {
-          if (item.livePhoto && item.stream) {
-            visuals.push({
-              type: 'livePhoto',
-              url: item.urlDefault,
-              video: item.stream.h266?.[0]?.masterUrl ||
-              item.stream.h265?.[0]?.masterUrl ||
-              item.stream.h264?.[0]?.masterUrl ||
-              item.stream.av1?.[0]?.masterUrl,
-              width: item.width,
-              height: item.height,
-            });
-          } else {
-            visuals.push({
-              type: 'image',
-              url: item.urlDefault,
-              video: null,
-              width: item.width,
-              height: item.height,
-            });
-          }
-        });
-      } else if (note.type === 'video' && note.video) {
-        const img = note.imageList?.[0];
-        const { stream = {}, video } = note.video.media || {};
-        visuals.push({
-          type: 'video',
-          url: img?.urlDefault,
-          video: stream.h266?.[0]?.masterUrl ||
-            stream.h265?.[0]?.masterUrl ||
-            stream.h264?.[0]?.masterUrl ||
-            stream.av1?.[0]?.masterUrl ||
-            '',
-          width: img?.width,
-          height: img?.height,
-          duration: video?.duration
-        });
-      }
+			const visuals: any[] = [];
+			if (note.type === 'normal') {
+				note.imageList.forEach((item: any) => {
+					if (item.livePhoto && item.stream) {
+						visuals.push({
+							type: 'livePhoto',
+							url: item.urlDefault,
+							video:
+								item.stream.h266?.[0]?.masterUrl ||
+								item.stream.h265?.[0]?.masterUrl ||
+								item.stream.h264?.[0]?.masterUrl ||
+								item.stream.av1?.[0]?.masterUrl,
+							width: item.width,
+							height: item.height,
+						});
+					} else {
+						visuals.push({
+							type: 'image',
+							url: item.urlDefault,
+							video: null,
+							width: item.width,
+							height: item.height,
+						});
+					}
+				});
+			} else if (note.type === 'video' && note.video) {
+				const img = note.imageList?.[0];
+				const { stream = {}, video } = note.video.media || {};
+				visuals.push({
+					type: 'video',
+					url: img?.urlDefault,
+					video:
+						stream.h266?.[0]?.masterUrl ||
+						stream.h265?.[0]?.masterUrl ||
+						stream.h264?.[0]?.masterUrl ||
+						stream.av1?.[0]?.masterUrl ||
+						'',
+					width: img?.width,
+					height: img?.height,
+					duration: video?.duration,
+				});
+			}
 
-			const result = {
-				nickName: note.user?.nickname,
-				avatar: note.user?.avatar,
-				title: note.title,
-				desc: note.desc,
-				visuals
-			};
-
-			return c.ok(result, '解析成功');
+			return c.ok(
+				{
+					nickName: note.user?.nickname,
+					avatar: note.user?.avatar,
+					title: note.title,
+					desc: note.desc,
+					visuals,
+				},
+				'解析成功',
+			);
 		} catch {
 			return c.fail('链接解析失败');
 		}
